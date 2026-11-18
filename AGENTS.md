@@ -278,9 +278,9 @@ Aggiornato al 18/11/2026.
 - programmare è scomporre un problema in passi semplici, con un bivio SE/ALTRIMENTI (pseudo-codice e diagramma di flusso)
 - script in pagina e file .js esterno collegato in fondo al body
 - console del browser (F12): console.log con uno o più valori, la console come calcolatrice; alert; commenti // e /* */
-- la console come REPL (Read, Eval, Print, Loop): ogni riga mostra il suo valore in grigio; undefined in grigio non è un errore (let x = 5, console.log); il nome da solo stampa il valore solo in console, nel file serve console.log; le variabili restano fino alla ricarica; freccia su e Shift+Invio; in console Chrome accetta let x due volte, in un file è SyntaxError
+- la console come REPL (Read, Eval, Print, Loop): ogni riga mostra il suo valore in grigio; undefined in grigio non è un errore (let etaUtente = 5, console.log); il nome da solo stampa il valore solo in console, nel file serve console.log; le variabili restano fino alla ricarica; freccia su e Shift+Invio; in console Chrome accetta let etaUtente due volte, in un file è SyntaxError
 - JavaScript è case sensitive; leggere i messaggi d'errore rossi in console (tipo, messaggio, riga)
-- variabili: dichiarazione (let x;), inizializzazione (const x = 5;), assegnazione (x = 7;); const non si riassegna, let sì; var non si usa
+- variabili: dichiarazione (let etaUtente;), inizializzazione (const prezzoCaffe = 5;), assegnazione (etaUtente = 7;); const non si riassegna, let sì; var non si usa
 - errori: TypeError su una const riassegnata, SyntaxError per const senza valore, ReferenceError usando una variabile prima di dichiararla
 - nomi delle variabili: iniziano con una lettera, niente trattini o spazi, niente parole riservate, camelCase
 - tipi primitivi Number, String, Boolean; typeof per vedere il tipo
@@ -298,7 +298,7 @@ Aggiornato al 18/11/2026.
 - operatori di confronto === !== > < >= <=; == contro ===, si usa sempre ===; = assegna, === confronta
 - operatori logici && (e), || (o), ! (non) per unire condizioni e controllare i dati dell'utente
 - Math.random() e Math.floor: Math.floor(Math.random() * 9) + 1 per un intero da 1 a 9
-- operatore modulo %: n % 2 === 0 vuol dire pari
+- operatore modulo %: numero % 2 === 0 vuol dire pari
 - .length delle stringhe e .toFixed(2) nei confronti e nei messaggi
 - variable scope: variabili globali e di blocco (let e const dentro le graffe di un if)
 - STEPS e quattro fasi in ogni programma
@@ -310,14 +310,14 @@ Aggiornato al 18/11/2026.
 - il for passo per passo: il contatore si inizializza una volta sola, poi condizione, corpo, incremento, di nuovo condizione; si esce quando la condizione è false (3 giri, 4 controlli)
 - la tabella dei giri (giro, valore di i, condizione, corpo, i dopo l'incremento) per prevedere cosa stampa un ciclo
 - cambiare i tre pezzi: partire da 1 con <=, di due in due (i = i + 2), all'indietro con i-- e >; < contro <= fa un giro in più o in meno; un ciclo con la condizione falsa all'inizio non parte
-- incremento e decremento: i++ e i-- come i = i + 1 e i = i - 1; x++ restituisce il valore vecchio, ++x quello nuovo (visto in console); nei cicli si scrive i++; x += 2
+- incremento e decremento: i++ e i-- come i = i + 1 e i = i - 1; punteggio++ restituisce il valore vecchio, ++punteggio quello nuovo (visto in console); nei cicli si scrive i++; punteggio += 2
 - scope: il contatore dichiarato con let tra le tonde esiste solo nel ciclo (dopo, ReferenceError: i is not defined); le variabili dichiarate nel corpo rinascono a ogni giro
-- accumulatore: let sum = 0 prima del ciclo, sum = sum + i dentro, output dopo il ciclo una volta sola; if con % dentro il for
+- accumulatore: let somma = 0 prima del ciclo, somma = somma + numero dentro, output dopo il ciclo una volta sola; if con % dentro il for
 - ciclo while: solo la condizione, il contatore va preparato prima e la condizione va cambiata nel corpo; si usa quando non si sa quante volte ripetere (lancia il dado finché esce 6)
 - ciclo infinito: la condizione non diventa mai false (i-- con <, while senza incremento); la scheda del browser si blocca e va chiusa
 - do/while: esegue il corpo almeno una volta e controlla dopo; utile per chiedere un dato finché non è valido
 - for o while: for quando si sa quante volte, while quando si conosce solo la condizione di uscita; ogni for si può scrivere come while
-- FizzBuzz con STEPS e quattro fasi: messaggio di default uguale al numero, il caso multiplo di 3 e di 5 (o i % 15 === 0) va controllato per primo perché il primo ramo vero vince
+- FizzBuzz con STEPS e quattro fasi: messaggio di default uguale al numero, il caso multiplo di 3 e di 5 (o numero % 15 === 0) va controllato per primo perché il primo ramo vero vince
 - con prompt in un ciclo il file si apre con doppio clic, non con Live Server
 
 ### Prossime lezioni: argomenti NON ancora fatti
