@@ -81,6 +81,7 @@ Qui nessuno ti chiede niente: i dati li scrivi tu nel codice, nella fase di racc
   - 100 € e 3 persone → `A testa: 36.67 €`;
   - 70 € e 4 persone → `A testa: 20.00 €`;
   - 50 € e 2 persone → `A testa: 30.00 €`;
+  - `cento` e 3 → `A testa: NaN €`. In questa traccia i dati non si controllano: i controlli arrivano dalla traccia 07;
   - se esce una cifra enorme, guarda con `typeof` il tipo di quello che ti restituisce `prompt`.
 
 <details>
@@ -98,7 +99,8 @@ Qui nessuno ti chiede niente: i dati li scrivi tu nel codice, nella fase di racc
 - **Come verifichi**:
   - 18 → `Prezzo del biglietto: 36 €`;
   - 23 → `Prezzo del biglietto: 36 €` (23 kg non supera 23 kg);
-  - 24 → `Prezzo del biglietto: 56 €`.
+  - 24 → `Prezzo del biglietto: 56 €`;
+  - `pesante` → `Prezzo del biglietto: 36 €`. Qui il peso non si controlla: sai dire perché esce 36 €?
 
 <details>
 <summary>Suggerimento</summary>
@@ -132,7 +134,8 @@ Qui l'utente non scrive niente: il dato lo "raccoglie" `Math.random()`. Ti serve
   - `sabato` → `Buon weekend!`;
   - `domenica` → `Buon weekend!`;
   - `mercoledì` → `Buon lavoro`;
-  - `Sabato` con la maiuscola → `Buon lavoro`. Sai dire perché? Per ora va bene così.
+  - `Sabato` con la maiuscola → `Buon lavoro`. Sai dire perché? Per ora va bene così;
+  - campo vuoto, oppure Annulla → `Buon lavoro`.
 
 <details>
 <summary>Suggerimento</summary>
@@ -150,7 +153,8 @@ Basta un solo `if`, con due confronti nella stessa condizione. Quale operatore l
   - `admin` e `1234` → `Login effettuato`;
   - `Admin` e `1234` → `Credenziali errate`;
   - `admin` e `12345` → `Credenziali errate`;
-  - `ospite` e `1234` → `Credenziali errate`.
+  - `ospite` e `1234` → `Credenziali errate`;
+  - Annulla su una delle due domande → `Credenziali errate`.
 
 <details>
 <summary>Suggerimento</summary>
@@ -170,7 +174,8 @@ Devono essere giusti tutti e due i dati. E la password: anche se scrivi `1234`, 
   - 139 e 30 → `Mi dispiace, non puoi salire`;
   - 175 e 13 → `Mi dispiace, non puoi salire`;
   - `alto` e 15 → `Dati non validi`;
-  - 150 e `quindici` → `Dati non validi`.
+  - 150 e `quindici` → `Dati non validi`;
+  - Annulla alla prima domanda → la seconda domanda compare lo stesso, poi `Dati non validi`.
 
 <details>
 <summary>Suggerimento</summary>
@@ -183,19 +188,22 @@ Prima controlla i dati, poi le regole: il primo ramo vero vince. Ti servono `isN
 
 *Catena `if`/`else if`/`else`.*
 
-- **Obiettivo**: il parcheggio costa 5 € fino a 2 ore, 10 € fino a 5 ore, 15 € oltre le 5 ore. Chiedi quante ore resta l'auto e stampa in console `Da pagare: 10 €`. Se l'utente non scrive un numero, stampa `Scrivi il numero di ore`.
+- **Obiettivo**: il parcheggio costa 5 € fino a 2 ore, 10 € fino a 5 ore, 15 € oltre le 5 ore. Chiedi quante ore resta l'auto e stampa in console `Da pagare: 10 €`. Se l'utente non scrive un numero, o scrive un numero minore di 1, stampa `Scrivi il numero di ore`.
 - **Come verifichi**:
   - 1 → `Da pagare: 5 €`;
   - 2 → `Da pagare: 5 €`;
   - 3 → `Da pagare: 10 €`;
   - 5 → `Da pagare: 10 €`;
   - 6 → `Da pagare: 15 €`;
-  - `tre` → `Scrivi il numero di ore`.
+  - `tre` → `Scrivi il numero di ore`;
+  - 0 → `Scrivi il numero di ore`;
+  - -3 → `Scrivi il numero di ore`;
+  - campo vuoto, oppure Annulla → `Scrivi il numero di ore`.
 
 <details>
 <summary>Suggerimento</summary>
 
-Una catena di `if`, `else if` ed `else`: si ferma al primo ramo vero. In che ordine metti i controlli perché 2 ore costino 5 € e non 10 €? Dispensa [Condizioni](https://kb-aiwd.andreadev237.workers.dev/lezioni/js-condizioni#if), parte "if, else e catene di condizioni".
+Una catena di `if`, `else if` ed `else`: si ferma al primo ramo vero. Il controllo dei dati va per primo, e unisce due casi con un operatore logico. Poi: in che ordine metti i controlli perché 2 ore costino 5 € e non 10 €? Dispensa [Condizioni](https://kb-aiwd.andreadev237.workers.dev/lezioni/js-condizioni#if), parte "if, else e catene di condizioni".
 
 </details>
 
@@ -203,18 +211,21 @@ Una catena di `if`, `else if` ed `else`: si ferma al primo ramo vero. In che ord
 
 *`if` dentro un `if`.*
 
-- **Obiettivo**: chiedi la temperatura esterna. Se è sotto i 15 °C, chiedi anche se piove (si risponde `si` o `no`, senza accento): se piove il messaggio è `Metti l'impermeabile`, altrimenti `Metti la giacca`. Da 15 °C in su il messaggio è `Vai leggero`, e la domanda sulla pioggia **non** compare. Mostra il messaggio con `alert`.
+- **Obiettivo**: chiedi la temperatura esterna. Se è sotto i 15 °C, chiedi anche se piove (si risponde `si` o `no`, senza accento): se piove il messaggio è `Metti l'impermeabile`, altrimenti `Metti la giacca`. Ogni risposta diversa da `si` vale come no. Da 15 °C in su il messaggio è `Vai leggero`, e la domanda sulla pioggia **non** compare. Se la temperatura non è un numero, il messaggio è `Scrivi la temperatura`, anche qui senza la domanda sulla pioggia. Le temperature sotto zero valgono. Mostra il messaggio con `alert`.
 - **Come verifichi**:
   - 22 → `Vai leggero`, con una sola domanda;
   - 15 → `Vai leggero`, con una sola domanda;
   - 8 e `si` → `Metti l'impermeabile`;
   - 8 e `no` → `Metti la giacca`;
-  - 14 e `si` → `Metti l'impermeabile`.
+  - 14 e `si` → `Metti l'impermeabile`;
+  - -3 e `no` → `Metti la giacca`;
+  - 8 e `sì` con l'accento → `Metti la giacca` (vale solo `si`);
+  - `caldo` → `Scrivi la temperatura`, con una sola domanda.
 
 <details>
 <summary>Suggerimento</summary>
 
-La seconda domanda serve solo quando fa freddo, quindi si scrive dentro il ramo del freddo: un `if` dentro un altro `if`. Va bene se una parte della raccolta dati finisce lì. Dispensa [Condizioni](https://kb-aiwd.andreadev237.workers.dev/lezioni/js-condizioni#nested), parte "if annidati".
+Prima il controllo della temperatura con `isNaN`, poi il freddo. La seconda domanda serve solo quando fa freddo, quindi si scrive dentro il ramo del freddo: un `if` dentro un altro `if`. Va bene se una parte della raccolta dati finisce lì. Dispensa [Condizioni](https://kb-aiwd.andreadev237.workers.dev/lezioni/js-condizioni#nested), parte "if annidati".
 
 </details>
 
@@ -222,14 +233,15 @@ La seconda domanda serve solo quando fa freddo, quindi si scrive dentro il ramo 
 
 *`if` annidati e controllo dei dati.*
 
-- **Obiettivo**: chiedi il saldo del conto e quanto vuoi prelevare. Prima controlla che l'importo sia maggiore di 0: se non lo è, il messaggio è `Importo non valido`. Se l'importo è valido e il saldo basta, il messaggio è `Prelievo effettuato. Nuovo saldo: 300 €`; se il saldo non basta, `Saldo insufficiente`. Mostra il messaggio con `alert`.
+- **Obiettivo**: chiedi il saldo del conto e quanto vuoi prelevare. Prima controlla che l'importo sia maggiore di 0: se non lo è, il messaggio è `Importo non valido`. Se l'importo è valido e il saldo basta, il messaggio è `Prelievo effettuato. Nuovo saldo: 300 €`; se il saldo non basta, `Saldo insufficiente`. Mostra il messaggio con `alert`. Il saldo non lo controlli: nelle prove scrivilo sempre come numero.
 - **Come verifichi**:
   - saldo 500 e prelievo 200 → `Prelievo effettuato. Nuovo saldo: 300 €`;
   - 500 e 500 → `Prelievo effettuato. Nuovo saldo: 0 €`;
   - 500 e 600 → `Saldo insufficiente`;
   - 500 e 0 → `Importo non valido`;
   - 500 e -50 → `Importo non valido`;
-  - 500 e `cento` → `Importo non valido`.
+  - 500 e `cento` → `Importo non valido`;
+  - 500 e Annulla → `Importo non valido`.
 
 <details>
 <summary>Suggerimento</summary>
@@ -247,7 +259,7 @@ Solo se hai finito le dieci tracce. Stesse regole: STEPS, quattro fasi, doppio c
 ### Bonus 1 · La pagella
 
 - **Obiettivo**: chiedi un voto da 1 a 10. Mostra con `alert` `Insufficiente` sotto il 6, `Sufficiente` per 6 e 7, `Buono` per 8 e 9, `Ottimo` per 10. Se il voto non è un numero o è fuori da 1-10, il messaggio è `Voto non valido`.
-- **Come verifichi**: 5 → `Insufficiente`; 6 e 7 → `Sufficiente`; 8 e 9 → `Buono`; 10 → `Ottimo`; 0, 11 e `otto` → `Voto non valido`.
+- **Come verifichi**: 5 → `Insufficiente`; 6 e 7 → `Sufficiente`; 8 e 9 → `Buono`; 10 → `Ottimo`; 0, 11, `otto`, campo vuoto e Annulla → `Voto non valido`.
 
 <details>
 <summary>Suggerimento</summary>
@@ -258,8 +270,8 @@ Il controllo del voto non valido va per primo. "Fuori da 1-10" sono due confront
 
 ### Bonus 2 · La tessera fedeltà
 
-- **Obiettivo**: chiedi il prezzo di un prodotto (in euro, senza centesimi) e se il cliente ha la tessera fedeltà (`si` o `no`). Con la tessera c'è uno sconto del 10%. Mostra con `alert` `Prezzo da pagare: 40.50 €`, sempre con due decimali.
-- **Come verifichi**: 45 e `si` → `Prezzo da pagare: 40.50 €`; 45 e `no` → `Prezzo da pagare: 45.00 €`; 100 e `si` → `Prezzo da pagare: 90.00 €`.
+- **Obiettivo**: chiedi il prezzo di un prodotto (in euro, senza centesimi) e se il cliente ha la tessera fedeltà (`si` o `no`). Con la tessera c'è uno sconto del 10%. Ogni risposta diversa da `si` vale come no. Il prezzo non lo controlli: nelle prove scrivilo sempre come numero. Mostra con `alert` `Prezzo da pagare: 40.50 €`, sempre con due decimali.
+- **Come verifichi**: 45 e `si` → `Prezzo da pagare: 40.50 €`; 45 e `no` → `Prezzo da pagare: 45.00 €`; 100 e `si` → `Prezzo da pagare: 90.00 €`; 45 e `Si` con la maiuscola → `Prezzo da pagare: 45.00 €`.
 
 <details>
 <summary>Suggerimento</summary>
