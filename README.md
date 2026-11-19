@@ -28,7 +28,8 @@ Le prime due tracce ripassano le variabili. Dalla terza in poi ci sono le condiz
 │   ├── …
 │   └── bonus-2-tessera.js
 ├── README.md                           ← questo file
-└── AGENTS.md                           ← le istruzioni per il tutor AI
+├── AGENTS.md                           ← le istruzioni per il tutor AI
+└── TUTOR.md                            ← le note del docente sull'esercizio, per il tutor AI
 ```
 
 Perché una pagina per traccia: con un doppio clic parte solo il programma che ti interessa, e F5 lo rifà da capo. Non devi commentare e decommentare niente.
