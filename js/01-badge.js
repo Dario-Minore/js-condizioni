@@ -10,6 +10,9 @@
 */
 
 // # Fase di preparazione
+const name = "Ada";
+const age = 36;
+const job = "sviluppatrice";
 
 
 // # Fase di raccolta dati
@@ -19,4 +22,6 @@
 
 
 // # Fase di output
-
+console.log('Mi chiamo ' + name + ', ho ' + age + ' anni e faccio la ' + job + '.');
+console.log(`Mi chiamo ${name}, ho ${age} anni e faccio la ${job}.`);
+console.log(`Fra 10 anni avrò ${age + 10} anni.`);
