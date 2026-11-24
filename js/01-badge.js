@@ -3,8 +3,8 @@
 
 /*
   STEPS
-  1 -
-  2 -
+  1 Ho creato le 3 costanti;
+  2 Ho generato l'output usando console.log e alla fine ho fatto un piccolo calcolo aggiungendo 10 alla costante age.
   3 -
   4 -
 */
